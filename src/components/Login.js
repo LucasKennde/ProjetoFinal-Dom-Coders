@@ -33,7 +33,6 @@ export const renderLogin = () => {
     });
 };
 
-
 const authenticateUser = async (email, password) => {
     const response = await fetch('https://fakestoreapi.com/auth/login', {
         method: 'POST',
