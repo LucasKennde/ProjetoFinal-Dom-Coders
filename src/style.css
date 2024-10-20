@@ -2,6 +2,19 @@ body {
   font-family: Arial, sans-serif;
 }
 
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+
+}
+
 form {
   max-width: 400px;
   margin: auto;
@@ -21,7 +34,32 @@ input {
   margin-bottom: 10px;
 }
 
-button {
+form button {
   padding: 10px;
   width: 100%;
+}
+
+#vitrine {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  max-width: 1280px;
+}
+
+#vitrine img {
+  width: 100%;
+  max-width: 270px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+
+
+#vitrine .adicionar {
+  border-radius: 4px;
+  background: #216A3F;
+  padding: 8px 48px;
+  color: white;
+  display: flex;
+  justify-content: center;
 }
