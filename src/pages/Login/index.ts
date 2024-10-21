@@ -97,6 +97,7 @@ async function logar(username: string, password: string): Promise<string | undef
 
   } catch (error) {
     console.error("Deu bom não! Usuário ou senha incorretos.");
+    alert("usuario ou senha incorretos")
     return undefined;
   }
 }

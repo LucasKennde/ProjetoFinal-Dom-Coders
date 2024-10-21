@@ -1,4 +1,4 @@
-import { searchCart } from "../../Components/Modal";
+import { DisplayModal, searchCart } from "../../Components/Modal";
 import "./style.css"
 
 
@@ -51,6 +51,8 @@ export const Vitrine = () => {
                 cartItems.push(newItem);
             }
             sessionStorage.setItem('cart', JSON.stringify(cartItems));
+            DisplayModal()
+            alert('Produto adicionado ao carrinho')
         } else {
             alert("Você precisa estar logado para adicionar produtos ao carrinho");
         }

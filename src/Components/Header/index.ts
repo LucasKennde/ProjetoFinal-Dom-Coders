@@ -21,7 +21,8 @@ export const Header = (token: any) => {
         </div>
         <div class="user">
           <div class="icon-cart"><img id="button-cart" src="/images/iconCart.png" alt>
-          <div id="quantity-items-cart">${cartItems.length}</div>
+          ${cartItems ? `<div id="quantity-items-cart">${cartItems.length}</div>` : ""}
+          
           </div>
           <h3>${token ? "<img src='/images/Vector.png'>" : `<span id="login-btn">Faça seu login</span>`}</h3>
         </div>

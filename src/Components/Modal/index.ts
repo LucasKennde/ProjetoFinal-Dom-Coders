@@ -23,7 +23,7 @@ export const toggleModal = () => {
 }
 
 
-const DisplayModal = async () => {
+export const DisplayModal = async () => {
     const cartItems: CartItem[] = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart') as string) : await searchCart();
 
     cartItemsContainer.innerHTML = '';
@@ -66,7 +66,6 @@ const DisplayModal = async () => {
         });
     });
 
-    // Atualiza o subtotal e total
     subtotal.innerHTML = `R$ ${valorTotal.toFixed(2)}`;
     total.innerHTML = `R$ ${valorTotal.toFixed(2)}`;
 };
@@ -90,6 +89,12 @@ const updateQuantity = (productId: number, change: number) => {
 };
 
 
+
+const buyButton = document.querySelector('.btn-buy')
+buyButton!.addEventListener('click', () => {
+    sessionStorage.removeItem('cart');
+    DisplayModal();
+})
 
 
 export const searchCart = async () => {
