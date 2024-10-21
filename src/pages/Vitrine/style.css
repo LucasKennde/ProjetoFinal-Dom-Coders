@@ -1,0 +1,83 @@
+#app {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    row-gap: 80px;
+    gap: 32px;
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: 0 auto;
+
+}
+
+.banner {
+    width: 100%;
+    max-width: 1440px;
+    margin: 2rem auto;
+
+    img {
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+.grid-produtos div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.grid-produtos img {
+    width: 100%;
+    max-width: 270px;
+    max-height: 201px;
+    aspect-ratio: 1;
+    object-fit: contain;
+}
+
+.grid-produtos h2 {
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    max-width: 270px;
+    max-height: 201px;
+}
+
+.grid-produtos p {
+    color: #216A3F;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.grid-produtos .adicionar {
+    border-radius: 4px;
+    background: #216A3F;
+    padding: 8px 48px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    #vitrine .adicionar:hover {
+        border-radius: 4px;
+        background: #57a778;
+        padding: 8px 48px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        font-weight: 500;
+    }
+}

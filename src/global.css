@@ -1,0 +1,232 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Calibri, sans-serif;
+}
+
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1440px;
+}
+
+.login .container {
+    display: flex;
+}
+
+.login .container div {
+    width: 100%;
+}
+
+.mcDOM {
+    width: 125% !important;
+}
+
+.mcDOM img {
+    width: 100%;
+}
+
+.formLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80dvh !important;
+    flex-direction: column;
+}
+
+.formLogin form {
+    display: flex;
+    flex-direction: column;
+    width: 377px;
+    gap: 40px;
+}
+
+.titleForm h1 {
+    font-family: inter, sans-serif;
+    font-size: 42px;
+    line-height: 30px;
+    margin-bottom: 24px;
+}
+
+.titleForm span {
+    font-family: inter, sans-serif;
+    font-size: 20px;
+}
+
+.formLogin label {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #7f7f7f;
+
+    span {
+        font-size: 18px;
+        color: #7f7f7f;
+    }
+
+    input {
+        width: 100%;
+        height: 4px;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        transition: 0.1s;
+        font-size: 18px;
+        padding: 0px 1rem;
+
+        &:focus {
+            height: 40px;
+        }
+    }
+}
+
+.formLogin .spaceButton {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn-login {
+        padding: 1rem 3rem;
+        font-size: 18px;
+        color: #f9f9f9;
+        background: #216A3F;
+        font-weight: 500;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: 0.1s;
+
+        &:hover {
+            background-color: #1A5C2F;
+        }
+    }
+
+    span {
+        font-size: 1.3rem;
+        color: #0D3C2F;
+
+    }
+}
+
+.formLogin .space {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    span {
+        width: 100%;
+    }
+
+    div {
+        width: 100%;
+        height: 1px;
+        background-color: #1A5C2F;
+
+    }
+}
+
+.modal-cart {
+    position: fixed;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    z-index: 9;
+
+    background-color: #0000002c;
+    backdrop-filter: blur(10px);
+
+    display: none;
+}
+
+.showModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #f9f9f9;
+    padding: 28px 31px;
+    max-width: 494px;
+    border-radius: 10px;
+
+    section {
+        border: 2px solid #000;
+        border-radius: inherit;
+        padding: 16px 38px;
+    }
+}
+
+.cart-item {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    border-bottom: 1px solid #000;
+
+    .content-Item {
+        width: 100%;
+        height: 100px !important;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+
+        #quantity-item {
+            display: flex;
+            gap: 1rem;
+            size: 1rem;
+            font-weight: 500;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 0px 14px;
+            border-radius: 2rem;
+
+            button {
+                background-color: transparent;
+                font-size: 2rem;
+                border: none;
+                cursor: pointer;
+            }
+        }
+
+        div {
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+        }
+    }
+
+    #price-item {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    img {
+        width: 99px;
+        height: 99px;
+        object-fit: cover;
+    }
+}
+
+.cart-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 23px 0px;
+
+    div {
+        font-size: 1rem;
+        display: flex;
+        font-weight: 400;
+        justify-content: space-between;
+    }
+}

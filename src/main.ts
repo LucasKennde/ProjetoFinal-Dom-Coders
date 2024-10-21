@@ -1,24 +1,30 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+import { Header } from "./Components/Header";
+import { renderizarLogin } from "./pages/Login";
+import { Vitrine } from "./pages/Vitrine";
+import { toggleModal } from "./Components/Modal";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const token = sessionStorage.getItem('token') ? JSON.parse(sessionStorage.getItem('token') as string) : null;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+const header = document.querySelector('.header')
+header!.innerHTML = Header(token)
+
+const modalButton = document.getElementById('button-cart');
+const loginButton = document.getElementById('login-btn');
+
+modalButton!.addEventListener('click', toggleModal);
+
+if (loginButton) {
+    loginButton.addEventListener('click', renderizarLogin);
+}
+
+
+
+if (token) {
+    Vitrine();
+} else {
+    renderizarLogin();
+}
+
+
+
+Vitrine()
