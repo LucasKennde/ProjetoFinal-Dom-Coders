@@ -115,12 +115,11 @@ async function renderizarProdutos() {
     const produtoElement = document.createElement('div');
     // produtoElement.innerHTML = JSON.stringify(produto)
     produtoElement.innerHTML = `
-    
+     
       <img src="${produto.image}" alt="">
       <h2>${produto.title}</h2>
       <div>
-        <p>R$${produto.price}</p>
-       
+        <p>R$${produto.price}</p>       
         <button class="adicionar">Adicionar ao carrinho</button>
       </div>
 

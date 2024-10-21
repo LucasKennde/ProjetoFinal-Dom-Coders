@@ -1,5 +1,7 @@
 body {
   font-family: Arial, sans-serif;
+  margin: 160px;
+  margin-top: 291px;
 }
 
 button,
@@ -16,6 +18,7 @@ input[type="reset"] {
 }
 
 form {
+  visibility: hidden;
   max-width: 400px;
   margin: auto;
   padding: 20px;
@@ -24,36 +27,69 @@ form {
 }
 
 label {
+  visibility: hidden;
   display: block;
   margin-bottom: 5px;
 }
 
 input {
+  visibility: hidden;
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
 }
 
 form button {
+  visibility: hidden;
   padding: 10px;
   width: 100%;
 }
 
+h1 {
+  font-size: 24px;
+  text-align: start;
+}
+
 #vitrine {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  row-gap: 80px;
+  gap: 32px;
   max-width: 1280px;
+  place-content: center;
+  height: 100vh;
+  margin: 0 auto;
+
+
 }
 
 #vitrine img {
   width: 100%;
   max-width: 270px;
+  max-height: 201px;
   aspect-ratio: 1;
   object-fit: contain;
 }
 
+#vitrine h2 {
 
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  max-width: 270px;
+  max-height: 201px;
+}
+
+#vitrine p {
+  color: #216A3F;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
 
 #vitrine .adicionar {
   border-radius: 4px;
@@ -62,4 +98,36 @@ form button {
   color: white;
   display: flex;
   justify-content: center;
-}
+  font-weight: 500;
+
+
+  #vitrine .adicionar:hover {
+    border-radius: 4px;
+    background: #57a778;
+    padding: 8px 48px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1024px) {
+    #vitrine {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      /* 3 colunas em telas até 1024px */
+    }
+  }
+
+  @media (max-width: 768px) {
+    #vitrine {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      /* 2 colunas em telas até 768px */
+    }
+  }
+
+  @media (max-width: 480px) {
+    #vitrine {
+      grid-template-columns: 1fr;
+      /* 1 coluna em telas até 480px */
+    }
+  }
