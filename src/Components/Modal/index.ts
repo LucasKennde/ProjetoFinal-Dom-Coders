@@ -96,6 +96,7 @@ const updateQuantity = (productId: number, change: number) => {
 
 const buyButton = document.querySelector('.btn-buy')
 buyButton!.addEventListener('click', () => {
+    alert("Compra finalizada com sucesso")
     sessionStorage.removeItem('cart');
     DisplayModal();
 })
