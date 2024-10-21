@@ -270,3 +270,19 @@
 
     cursor: pointer;
 }
+
+.logoGoogle {
+    width: 100%;
+    height: 56px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #d1d1d1;
+    border-radius: 10px;
+
+    img {
+        height: 80%;
+        width: auto;
+    }
+}

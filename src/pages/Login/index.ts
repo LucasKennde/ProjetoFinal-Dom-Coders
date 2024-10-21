@@ -1,5 +1,7 @@
 import { Header } from "../../Components/Header";
+import { DisplayModal } from "../../Components/Modal";
 import { Vitrine } from "../Vitrine";
+
 export const Login = () => {
   const loginHtml = `
     <main class="wrapper login">
@@ -30,6 +32,9 @@ export const Login = () => {
                 <span>ou continue com</span>
                 <div></div>
               </div>
+              <div class="logoGoogle">
+                <img src="/images/logoGoogle.png">
+              </div>
             </form>
           </div>
         </div>
@@ -51,6 +56,7 @@ export const Login = () => {
           console.log("Login bem-sucedido! Token armazenado.");
           const header = document.querySelector('.header')
           header!.innerHTML = Header(token)
+          DisplayModal()
           Vitrine()
         } else {
           console.error("Falha no login! Verifique suas credenciais.");

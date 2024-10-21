@@ -18,8 +18,12 @@ interface CartItem {
 const token = sessionStorage.getItem('token') ? JSON.parse(sessionStorage.getItem('token') as string) : null;
 
 export const toggleModal = () => {
-    const modal = document.querySelector('.modal-cart') as HTMLElement;
-    modal.classList.toggle('showModal');
+    if (token) {
+        const modal = document.querySelector('.modal-cart') as HTMLElement;
+        modal.classList.toggle('showModal');
+    } else {
+        alert("Usuario só pode usar o carrinho quando estiver logado!")
+    }
 }
 
 
