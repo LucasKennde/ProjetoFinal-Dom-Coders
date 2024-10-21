@@ -1,13 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-Br">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>DOM.SHOP</title>
+    <link rel="stylesheet" href="./src/global.css">
+    <link rel="stylesheet" href="./src/Components/Header/style.css">
   </head>
   <body>
-    <div id="app"></div>
+    <div class="wrapper header">
+
+    </div>
+    <div id="app">
+
+    </div>
+    <div class="modal-cart">
+      <div class="modal-content">
+        <section>
+
+          <div class="cart-header">
+            <h1>Meu Carrinho!</h1>
+          </div>
+          <div class="cart-items">
+          </div>
+          <div class="cart-footer">
+            <div>
+              <span>Subtotal:</span>
+              <span id="subtotal"></span>
+            </div>
+            <div>
+              <span>Frete:</span>
+              <span id="frete">Gratis</span>
+            </div>
+            <div>
+              <span>Total:</span>
+              <span id="total"></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
