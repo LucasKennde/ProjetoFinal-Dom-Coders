@@ -69,3 +69,25 @@
     font-size: 1rem;
     text-align: center;
 }
+
+.icon-cart {
+    position: relative;
+    cursor: pointer;
+}
+
+#quantity-items-cart {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #f9f9f9;
+    background-color: #1A5C2A;
+    border-radius: 50%;
+    font-size: 14px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    padding: 10px;
+}

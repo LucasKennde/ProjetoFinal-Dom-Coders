@@ -1,3 +1,8 @@
+const modal = document.querySelector('.modal-cart') as HTMLElement;
+const cartItemsContainer = modal.querySelector('.cart-items') as HTMLElement;
+const subtotal = modal.querySelector('#subtotal') as HTMLElement;
+const total = modal.querySelector('#total') as HTMLElement;
+
 interface Product {
     id: number;
     title: string;
@@ -12,66 +17,86 @@ interface CartItem {
 
 const token = sessionStorage.getItem('token') ? JSON.parse(sessionStorage.getItem('token') as string) : null;
 
-export const toggleModal = (): void => {
+export const toggleModal = () => {
     const modal = document.querySelector('.modal-cart') as HTMLElement;
     modal.classList.toggle('showModal');
 }
 
-export const modalCart = async (): Promise<void> => {
-    const modal = document.querySelector('.modal-cart') as HTMLElement;
-    const cartItemsContainer = modal.querySelector('.cart-items') as HTMLElement;
-    const subtotal = modal.querySelector('#subtotal') as HTMLElement;
-    const total = modal.querySelector('#total') as HTMLElement;
+
+const DisplayModal = async () => {
+    const cartItems: CartItem[] = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart') as string) : await searchCart();
 
     cartItemsContainer.innerHTML = '';
+    const productDetails = await getProductDetails(cartItems);
+    let valorTotal = 0;
 
-    const cartItems: CartItem[] = await searchCart();
+    productDetails.forEach((product: Product) => {
+        const cartItem = cartItems.find(item => item.productId === product.id);
+        if (!cartItem) return;
 
-    if (cartItems && cartItems.length > 0) {
-        const productDetails = await getProductDetails(cartItems);
-        let valorTotal = 0
-        productDetails.forEach((product: Product) => {
-            const cartItem = cartItems.find(item => item.productId === product.id);
-            const quantity = cartItem ? cartItem.quantity : 0;
-            valorTotal += quantity * product.price
-            const productElement = document.createElement('div');
-            productElement.classList.add('cart-item');
-            productElement.innerHTML = `
+        const quantity = cartItem.quantity;
+        valorTotal += quantity * product.price;
 
-                <img src="${product.image}" alt="${product.title}" />
-                <div class="content-Item">
-                    <h3>${product.title}</h3>
-
-                    <div>
-                        <span id="price-item">R$ ${product.price.toFixed(2)}</span>
-                        <div id="quantity-item">
-                            <button> - </button>
-                            <span>${quantity}</span>
-                            <button> + </button>
-                        </div>
+        const productElement = document.createElement('div');
+        productElement.classList.add('cart-item');
+        productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.title}" />
+            <div class="content-Item">
+                <h3>${product.title}</h3>
+                <div>
+                    <span id="price-item">R$ ${product.price.toFixed(2)}</span>
+                    <div id="quantity-item">
+                        <button class="decrease-quantity"> - </button>
+                        <span class="item-quantity">${quantity}</span>
+                        <button class="increase-quantity"> + </button>
                     </div>
                 </div>
-            `;
+            </div>
+        `;
+        cartItemsContainer.appendChild(productElement);
 
-            const removeButton = productElement.querySelector('.remove-button');
-            removeButton?.addEventListener('click', () => {
-                console.log(`Remover ${product.title}`);
-            });
+        const decreaseBtn = productElement.querySelector('.decrease-quantity') as HTMLButtonElement;
+        const increaseBtn = productElement.querySelector('.increase-quantity') as HTMLButtonElement;
 
-            cartItemsContainer.appendChild(productElement);
+        decreaseBtn.addEventListener('click', () => {
+            updateQuantity(product.id, -1);
         });
-        subtotal.innerHTML = JSON.stringify(valorTotal)
-        total.innerHTML = JSON.stringify(valorTotal)
-    } else {
-        cartItemsContainer.innerHTML = '<p>Seu carrinho está vazio.</p>';
-    }
-}
+        increaseBtn.addEventListener('click', () => {
+            updateQuantity(product.id, 1);
+        });
+    });
 
-const searchCart = async (): Promise<CartItem[]> => {
+    // Atualiza o subtotal e total
+    subtotal.innerHTML = `R$ ${valorTotal.toFixed(2)}`;
+    total.innerHTML = `R$ ${valorTotal.toFixed(2)}`;
+};
+
+const updateQuantity = (productId: number, change: number) => {
+    const cartItems = JSON.parse(sessionStorage.getItem('cart') as string) as CartItem[];
+    const cartItemIndex = cartItems.findIndex(item => item.productId === productId);
+
+    if (cartItemIndex !== -1) {
+        const cartItem = cartItems[cartItemIndex];
+        cartItem.quantity += change;
+
+        if (cartItem.quantity <= 0) {
+            cartItems.splice(cartItemIndex, 1);
+        }
+
+        sessionStorage.setItem('cart', JSON.stringify(cartItems));
+
+        DisplayModal();
+    }
+};
+
+
+
+
+export const searchCart = async () => {
     try {
         const response = await fetch(`https://fakestoreapi.com/carts/${token.sub}`);
         const cart = await response.json();
-        console.log(cart.products);
+        sessionStorage.setItem('cart', JSON.stringify(cart.products))
         return cart.products;
     } catch (err) {
         console.error(err);
@@ -79,7 +104,8 @@ const searchCart = async (): Promise<CartItem[]> => {
     }
 }
 
-const getProductDetails = async (cartItems: CartItem[]): Promise<Product[]> => {
+
+export const getProductDetails = async (cartItems: CartItem[]): Promise<Product[]> => {
     const productDetails: Product[] = [];
 
     for (const item of cartItems) {
@@ -94,4 +120,4 @@ const getProductDetails = async (cartItems: CartItem[]): Promise<Product[]> => {
 
     return productDetails;
 }
-modalCart()
+DisplayModal()

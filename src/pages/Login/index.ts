@@ -1,3 +1,4 @@
+import { Header } from "../../Components/Header";
 import { Vitrine } from "../Vitrine";
 export const Login = () => {
   const loginHtml = `
@@ -48,6 +49,8 @@ export const Login = () => {
 
         if (token) {
           console.log("Login bem-sucedido! Token armazenado.");
+          const header = document.querySelector('.header')
+          header!.innerHTML = Header(token)
           Vitrine()
         } else {
           console.error("Falha no login! Verifique suas credenciais.");

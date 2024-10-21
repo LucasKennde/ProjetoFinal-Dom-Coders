@@ -1,5 +1,5 @@
-import { renderizarLogin } from "../../pages/Login";
 
+const cartItems = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart') as string) : null;
 export const Header = (token: any) => {
   return `
     <header class="container navbar">
@@ -20,7 +20,9 @@ export const Header = (token: any) => {
           <input type="search" placeholder="Buscar">
         </div>
         <div class="user">
-          <img id="button-cart" src="/images/iconCart.png" alt>
+          <div class="icon-cart"><img id="button-cart" src="/images/iconCart.png" alt>
+          <div id="quantity-items-cart">${cartItems.length}</div>
+          </div>
           <h3>${token ? "<img src='/images/Vector.png'>" : `<span id="login-btn">Faça seu login</span>`}</h3>
         </div>
       </div>

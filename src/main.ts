@@ -3,6 +3,8 @@ import { renderizarLogin } from "./pages/Login";
 import { Vitrine } from "./pages/Vitrine";
 import { toggleModal } from "./Components/Modal";
 
+const closeModal = document.querySelector('.close-modal')
+closeModal?.addEventListener('click', toggleModal)
 const token = sessionStorage.getItem('token') ? JSON.parse(sessionStorage.getItem('token') as string) : null;
 
 const header = document.querySelector('.header')

@@ -81,3 +81,29 @@
         font-weight: 500;
     }
 }
+
+.category {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.category h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.category select {
+    width: 270px;
+    height: 40px;
+    border-radius: 4px;
+    padding: 0px 20px;
+}
+
+#target {
+    width: 20px;
+    height: 40px;
+    background-color: #216A3F;
+    border-radius: 4px;
+}
